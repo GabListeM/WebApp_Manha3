@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp_Manha.Entidades;
+using WebApp_Manha.Models;
 
 namespace WebApp_Manha.Controllers
 {
@@ -18,6 +20,8 @@ namespace WebApp_Manha.Controllers
 
         public IActionResult Cadastro()
         {
+            NovoProdutoModelsView model = new NovoProdutoModelsView();
+            model.ListaCategorias =db.Categoria.ToList();
             return View();
         }
     
@@ -25,9 +29,9 @@ namespace WebApp_Manha.Controllers
     [HttpPost]
        public IActionResult SalvarDados(Produtos dados)
 
-    {
+        {
         db.Produtos.Add(dados);
         db.SaveChanges();
-        return RedirectToAction("Lista")
-    }
+        return RedirectToAction("Lista");
+        }
 }
