@@ -21,17 +21,18 @@ namespace WebApp_Manha.Controllers
         public IActionResult Cadastro()
         {
             NovoProdutoModelsView model = new NovoProdutoModelsView();
-            model.ListaCategorias =db.Categoria.ToList();
-            return View();
-        }
-    
-    }
-    [HttpPost]
-       public IActionResult SalvarDados(Produtos dados)
+            model.ListaCategorias = db.Categoria.ToList();
 
-        {
-        db.Produtos.Add(dados);
-        db.SaveChanges();
-        return RedirectToAction("Lista");
+            return View(model);
         }
+
+
+        [HttpPost]
+        public IActionResult SalvarDados(Produtos dados)
+        {
+            db.Produtos.Add(dados);
+            db.SaveChanges();
+            return RedirectToAction("Lista");
+        }
+    }
 }

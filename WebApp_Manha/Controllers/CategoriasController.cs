@@ -15,7 +15,7 @@ namespace WebApp_Manha.Controllers
 
         public IActionResult Lista()
         {
-            return View( contexto.Categorias.ToList() );
+            return View( contexto.Categoria.ToList() );
         }
 
         public IActionResult Cadastro()
@@ -33,12 +33,12 @@ namespace WebApp_Manha.Controllers
 
             if(entidade.Id > 0)
             {
-                contexto.Categorias.Update(entidade);
+                contexto.Categoria.Update(entidade);
                 contexto.SaveChanges();
             }
             else
             {
-                contexto.Categorias.Add(entidade);
+                contexto.Categoria.Add(entidade);
                 contexto.SaveChanges();
             }
 
@@ -48,10 +48,10 @@ namespace WebApp_Manha.Controllers
 
         public IActionResult Excluir(int id)
         {
-            Categoria item = contexto.Categorias.Find(id);
+            Categoria item = contexto.Categoria.Find(id);
             if (item != null)
             {
-                contexto.Categorias.Remove(item);
+                contexto.Categoria.Remove(item);
                 contexto.SaveChanges();
 
             }
@@ -60,7 +60,7 @@ namespace WebApp_Manha.Controllers
         }
 
         public IActionResult  Editar(int id) {
-        Categoria item = contexto.Categorias.Find(id);
+        Categoria item = contexto.Categoria.Find(id);
             if (item !=null)
             {
                 return View(item);
